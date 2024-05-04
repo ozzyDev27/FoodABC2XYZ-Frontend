@@ -6,6 +6,9 @@ function onimage(event) {
 let session_id = null
 
 document.getElementById("uploadForm").addEventListener("submit", function(event) {
+    const submitButton = event.target.querySelector("input[type=submit]");
+    submitButton.disabled = true; // Disable the submit button
+    submitButton.style.backgroundColor = "#999"; // Change button color to gray
     event.preventDefault(); // Prevent the form from submitting normally
 
     let formData = new FormData(this); // Create a FormData object from the form
@@ -28,6 +31,9 @@ document.getElementById("uploadForm").addEventListener("submit", function(event)
 });
 
 document.getElementById("resultForm").addEventListener("submit", function(event) {
+    const submitButton = event.target.querySelector("input[type=submit]");
+    submitButton.disabled = true; // Disable the submit button
+    submitButton.style.backgroundColor = "#999"; // Change button color to gray
     submitChanges(JSON.stringify({session_id: session_id, change: document.getElementById("changes").value}))
     event.preventDefault(); // Prevent the form from submitting normally
 });
@@ -48,10 +54,14 @@ function submitForm(formData) {
             document.getElementById("foodDescription").innerText = food.cultural_description
             document.getElementById("foodIngredients").innerText = food.ingredients
             session_id = food.session_id
-            // Update background image with the uploaded image
 
+            // Enable the submit button
+            const submitButton = document.getElementById("describeImage");
+            submitButton.disabled = false;
+            submitButton.style.backgroundColor = "#007bff"; // Restore original button color
+
+            // Update background image with the uploaded image
             document.querySelector(".resultsScreen").style.display = "block";
-            //document.body.style.backgroundImage = `url('data:image/jpeg;base64,${food.imageData}')`;
         });
     })
     .catch(error => {
@@ -94,6 +104,11 @@ function submitChanges(formData) {
             foodRecipe.appendChild(li);
         });
 
+        // Enable the submit button
+        const submitButton = document.querySelector(".recipes input[type=submit]");
+        submitButton.disabled = false;
+        submitButton.style.backgroundColor = "#007bff"; // Restore original button color
+
         document.querySelector(".recipes").style.display = "block";
     })
     .catch(error => {
@@ -101,3 +116,19 @@ function submitChanges(formData) {
     });
 }
 
+function share() {
+    let mywindow = window.open('', 'PRINT', 'height=650,width=900,top=100,left=150');
+    
+    mywindow.document.write('<html><head><title>Recipe</title>');
+    mywindow.document.write('</head><body >');
+    mywindow.document.write(document.querySelector(".recipes").innerHTML);
+    mywindow.document.write('</body></html>');
+    
+    mywindow.document.close(); // necessary for IE >= 10
+    mywindow.focus(); // necessary for IE >= 10*/
+    
+    mywindow.print();
+    mywindow.close();
+    
+    return true;
+}

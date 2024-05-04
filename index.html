@@ -6,6 +6,7 @@
     <title>Food ABC</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
     <link href="styles.css" rel="stylesheet">
     <script src="script.js" defer></script>
@@ -21,18 +22,18 @@
             <label id="imageSelect" for="image" class="custom-file-upload">Select Image</label>
             <input type="file" accept="image/*" id="image" name="test" value="Photo" onchange="onimage(event)">
             <br> <!-- Add line break for spacing -->
-            <input type="submit" value="Submit">
+            <input id="describeImage" type="submit" value="Submit">
         </form>
     </div>
     <div class="resultsScreen">
-        <form id="resultForm" action="/smtg" method="post" enctype="multipart/form-data">
+        <form id="resultForm" action="javascript:void(0);" method="post" enctype="multipart/form-data">
         <h2 id="foodName" style="margin: 0px;">Burger (~512 cal.)</h2>
         <p id="foodDescription">A beef patty between two bread buns, with sesame seeds on top. Inside, there is cheese, lettuce, and ketchup.</p>
         <h2> Ingredients</h2>
         <p id="foodIngredients">Beef, cheddar cheese, lettuce, tomato, burger bun, sesame seeds</p>
         <input id="changes" type="text" name="changes" placeholder="Changes">
         <br> <!-- Add line break for spacing -->
-            <input type="submit" value="Submit">
+            <input id="generateRecipe" type="submit" value="Submit">
         </form>
     </div>
     <div class="recipes">
@@ -43,9 +44,8 @@
         <h2> Recipe</h2>
         <ol class="foodRecipe">
             <li>Loading...</li>
-        </ul>
-        <button value="Share" class="shareButton">Share</button>
-
+        </ol>
+        <button value="Share" class="shareButton" onclick="share()">Share</button>
     </div>
 </body>
 </html>
