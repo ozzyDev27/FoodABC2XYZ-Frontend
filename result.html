@@ -3,9 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Image Upload and Text Entry</title>
+    <link href="https://cdn.tailwindcss.com" rel="stylesheet"> <!-- Tailwind CSS link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <style>  
+        .information {
+            position: relative;
+            top: 300px;
+        }
+        .info {
+            font-style: bold;
+        }
+        
+        .info_allergens-diet {
+            font-style: bold;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+        
+        body {
+            text-align: center;
+            color: white;
+            background: #222;
+            font-family: "Outfit", sans-serif;
+        }
+        
+        .background {
+            background-size: cover;
+            filter: blur(16px); /* Add blur effect to the background */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
+        header {
+            postion: absolute;
+            color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 13px;
+            font-size: 42px;
+            box-sizing: border-box;
+            font-family: "Outfit", sans-serif;
+        }
+        
+        .form-container {
+            font-family: "Outfit", sans-serif;
+            position: relative;
+            top: 200px;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center align items horizontally */
+        }
+        
+        input[type="file"] {
+            display: none; /* Hide the default file input */
+        }
+
+        .custom-file-upload {
+            font-style: bold;
+            cursor: pointer;
+            width:90%;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: inline-block;
+            transition: background-color 0.3s;
+            margin-bottom: 10px; /* Add margin to separate from submit button */
+        }
+
+        .custom-file-upload:hover {
+            background-color: #0056b3;
+            font-weight: bold; /* Make the button bold on hover */
+        }
+
+        input[type="submit"] {
+            font-style: bold;
+            cursor: pointer;
+            width: auto; /* Adjust width automatically */
+            background-color: #007bff;
+            transition: background-color 0.3s;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            color: white;
+            margin-top: 10px; /* Add margin to separate from upload button */
+        }
+        
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+            font-weight: bold; /* Make the button bold on hover */
+        }
+        
+        input[type="text"], textarea {
+            width: 90%; /* Set width to 90% for consistency */
+            padding: 10px; /* Add padding for better appearance */
+            margin-bottom: 10px; /* Add margin to separate inputs */
+            border-radius: 5px; /* Add border radius for rounded corners */
+            border: none; /* Remove default border */
+            background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+            color: white; /* Text color */
+        }
+        
+        h2 {
+            font-size: 20px; /* Set font size for headers */
+            margin-bottom: 5px; /* Add margin below headers for separation */
+            text-align: left;
+        }
+        
+        p {
+            margin-top: 5px; /* Add margin above paragraphs for separation */
+            text-align: left;
+        }
+        
+    </style>
 </head>
 <body>
-    
+    <div class="background"></div>
+    <header>
+        <h1 class="foodABC">Food ABC</h1>
+    </header>
+    <div class="resultsScreen">
+        <form id="uploadForm" action="/smtg" method="post" enctype="multipart/form-data">
+        <h2>Food Type:</h2>
+        <p>Simple Burger</p>
+        <h2>Food Description:</h2>
+        <p>A beef patty between two bread buns, with sesame seeds on top. Inside, there is cheese, lettuce, and ketchup.</p>
+        <h2>Ingredients:</h2>
+        <p>Beef, cheddar cheese, lettuce, tomato, burger bun</p>
+        <input type="text" name="changes" placeholder="Changes">
+        <br> <!-- Add line break for spacing -->
+            <input type="submit" value="Submit">
+        </form>
+    </div>
 </body>
 </html>
