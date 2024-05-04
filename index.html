@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Upload and Text Entry</title>
+    <link href="https://cdn.tailwindcss.com" rel="stylesheet"> <!-- Tailwind CSS link -->
+    <style>
+        body {
+            text-align: center;
+            color: white;
+            background: #222;
+        }
+        form {
+            display: inline-block;
+            text-align: left;
+            color: white;
+        }
+        header {
+            color: white;
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .background {
+            background: url('/image.png') center/cover;
+            -webkit-filter: blur(8px);
+            position: relative;
+            z-index: -1;
+            height: 100vh;
+        }
+        .form-container {
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: 400px;
+        }
+        textarea, input[type="file"], input[type="submit"] {
+            margin-top: 10px;
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background-color: #333;
+            color: white;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            cursor: pointer;
+            background-color: #007bff;
+            transition: background-color 0.3s;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="foodABC">Food ABC</h1>
+    </header>
+    <div class="form-container">
+        <form action="#" method="post" enctype="multipart/form-data">
+            <label for="image">Upload Image:</label>
+            <br>
+            <input type="file" id="image" name="image" accept="image/*">
+            <br><br>
+            
+            <label for="text">Enter Text:</label><br>
+            <textarea id="text" name="text" rows="4" cols="50"></textarea><br><br>
+            
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>
