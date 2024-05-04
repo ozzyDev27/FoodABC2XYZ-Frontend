@@ -43,7 +43,32 @@ function submitForm(formData) {
             document.getElementById("foodName").innerText = food.name
             document.getElementById("foodDescription").innerText = food.cultural_description
             document.getElementById("foodIngredients").innerText = food.ingredients
-            session_id = foo
+            session_id = food.session_id
+            // Update background image with the uploaded image
+            //document.body.style.backgroundImage = `url('data:image/jpeg;base64,${food.imageData}')`;
+        });
+    })
+    .catch(error => {
+        console.error("Error uploading file:", error);
+    });
+}
+
+function submitChanges(formData) {
+    fetch("http://10.210.1.53:5001/reimagine", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: formData
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Failed to upload file.");
+        }
+        const food = response.json().then(food => {
+            document.getElementsByClassName("resultsScreen")[0].style.display="block";
+            document.getElementById("foodName").innerText = food.name
+            document.getElementById("foodDescription").innerText = food.cultural_description
+            document.getElementById("foodIngredients").innerText = food.ingredients
+            session_id = food.session_id
             // Update background image with the uploaded image
             //document.body.style.backgroundImage = `url('data:image/jpeg;base64,${food.imageData}')`;
         });
