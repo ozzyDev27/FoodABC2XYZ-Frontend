@@ -7,6 +7,7 @@ let session_id = null
 
 document.getElementById("uploadForm").addEventListener("submit", function(event) {
     const submitButton = event.target.querySelector("input[type=submit]");
+    document.querySelector(".foodABC").innerHTML = "FoodABC"
     submitButton.disabled = true; // Disable the submit button
     submitButton.style.backgroundColor = "#999"; // Change button color to gray
     event.preventDefault(); // Prevent the form from submitting normally
@@ -105,9 +106,11 @@ function submitChanges(formData) {
         });
 
         // Enable the submit button
-        const submitButton = document.querySelector(".recipes input[type=submit]");
+        const submitButton = document.getElementById("generateRecipe");
         submitButton.disabled = false;
         submitButton.style.backgroundColor = "#007bff"; // Restore original button color
+
+        document.querySelector(".foodABC").innerHTML = "FoodXYZ"
 
         document.querySelector(".recipes").style.display = "block";
     })
